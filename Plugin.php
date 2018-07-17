@@ -1,6 +1,6 @@
 <?php
 
-namespace Kanboard\Plugin\Indicateurs;
+namespace Kanboard\Plugin\Activity;
 
 use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Security\Role;
@@ -9,12 +9,12 @@ class Plugin extends Base
 {
     public function initialize()
     {
-        $this->applicationAccessMap->add('IndicateursController', '*', Role::APP_USER);
+        $this->applicationAccessMap->add('ActivityController', '*', Role::APP_USER);
 
-        $this->template->hook->attach('template:project-list:menu:after', 'Indicateurs:menu');
+        $this->template->hook->attach('template:project-list:menu:after', 'Activity:menu');
 
         $this->route->enable();
-        $this->route->addRoute('/indicateurs', 'IndicateursController', 'index', 'Indicateurs');
+        $this->route->addRoute('/Activity', 'ActivityController', 'index', 'Activity');
     }
 
     public function getClasses()
@@ -24,12 +24,12 @@ class Plugin extends Base
 
     public function getPluginName()
     {
-        return 'Indicateurs';
+        return 'Activity';
     }
 
     public function getPluginDescription()
     {
-        return t("Indicateurs : état d'avancement des projets, nombre de projets par service, vue synthétique des projets");
+        return t("Activity : état d'avancement des projets, nombre de projets par service, vue synthétique des projets");
     }
 
     public function getPluginAuthor()
@@ -44,6 +44,6 @@ class Plugin extends Base
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/UnivParis1/kanboard-plugin-indicateurs';
+        return 'https://github.com/UnivParis1/kanboard-plugin-Activity';
     }
 }
